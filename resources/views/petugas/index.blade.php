@@ -17,7 +17,7 @@
                 <th>Alamat</th>
                 <th>No HP</th>
                 <th>Email</th>
-                <th>Aksi</th>
+                <th style="width: 160px;">Aksi</th>
             </tr>
         </thead>
 
@@ -30,10 +30,19 @@
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->no_hp }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>
-                        <a class="btn btn-warning btn-sm" href="{{ route('petugas.edit', $item) }}" role="button">
-                            Edit
-                        </a>
+                    <td style="white-space: nowrap;">
+                        <a class="btn btn-warning btn-sm" href="{{ route('petugas.edit', $item) }}"
+                            role="button">Edit</a>
+
+                        <form action="{{ route('petugas.destroy', $item) }}" method="POST" class="d-inline">
+                            @method('DELETE')
+                            @csrf
+
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Anda yakin?')">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

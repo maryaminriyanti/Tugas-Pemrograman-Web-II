@@ -117,6 +117,7 @@ class PetugasController extends Controller
      */
     public function destroy(Petugas $petugas)
     {
-        //
+        $petugas->delete($petugas);
+            return to_route('petugas.index')->withSuccess('Data berhasil dihapus');
     }
 }
