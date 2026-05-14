@@ -6,3 +6,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('', [PetugasController::class, 'index']);
 
 Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
+Route::get('/petugas/create', [PetugasController::class, 'create'])->name('petugas.create');
+Route::post('/petugas/store', [PetugasController::class, 'store'])->name('petugas.store');

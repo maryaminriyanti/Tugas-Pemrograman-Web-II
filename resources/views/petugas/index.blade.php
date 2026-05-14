@@ -1,8 +1,13 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot>
 
+    @session('success')
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endsession
 
-
+    <a class="btn btn-primary mb-3" href="{{ route('petugas.create') }}" role="button">Create</a>
     <table class="table table-bordered border-primary">
         <thead class="table-primary">
             <tr>

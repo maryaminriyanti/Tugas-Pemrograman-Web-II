@@ -23,7 +23,8 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('petugas.create', 
+        ['title' => 'Tambah Data Petugas']);
     }
 
     /**
@@ -31,7 +32,32 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validated = $request->validate([
+            'nama_petugas' => 'required|max:255',
+            'nip' => 'required|numeric',
+            'alamat' => 'required',
+            'no_hp' => 'required',
+            'email' => 'required|email',
+        ],
+        [
+            'nama_petugas.required' => 'Nama petugas tidak boleh kosong',
+            'nama_petugas.max' => 'Nama petugas maksimal 255 karakter',
+
+            'nip.required' => 'NIP tidak boleh kosong',
+            'nip.numeric' => 'NIP harus berupa angka',
+
+            'alamat.required' => 'Alamat tidak boleh kosong',
+
+            'no_hp.required' => 'Nomor HP tidak boleh kosong',
+
+            'email.required' => 'Email tidak boleh kosong',
+            'email.email' => 'Format email tidak valid',
+        ]);
+
+        Petugas::create($validated);
+
+        return to_route('petugas.index')
+            ->withSuccess('Data petugas berhasil ditambahkan');
     }
 
     /**
