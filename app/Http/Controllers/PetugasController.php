@@ -12,7 +12,10 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        //
+        return view('petugas.index', [
+        'title' => 'Data Petugas',
+        'petugas' => Petugas::latest()->get(),
+    ]);
     }
 
     /**

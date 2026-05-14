@@ -19,7 +19,7 @@ class PetugasFactory extends Factory
     {
         return [
             'nama_petugas' => fake()->name(),
-            'nip' => fake()->numerify('##################'),
+            'nip' => fake()->numerify('######'),
             'alamat' => fake()->address(),
             'no_hp' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
