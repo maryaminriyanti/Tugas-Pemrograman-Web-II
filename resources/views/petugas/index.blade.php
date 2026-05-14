@@ -17,6 +17,7 @@
                 <th>Alamat</th>
                 <th>No HP</th>
                 <th>Email</th>
+                <th>Aksi</th>
             </tr>
         </thead>
 
@@ -29,6 +30,11 @@
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->no_hp }}</td>
                     <td>{{ $item->email }}</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="{{ route('petugas.edit', $item) }}" role="button">
+                            Edit
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
