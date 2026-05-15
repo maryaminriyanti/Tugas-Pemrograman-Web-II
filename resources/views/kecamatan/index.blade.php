@@ -52,6 +52,9 @@
                     <td>{{ $item->alamat_kantor }}</td>
 
                     <td style="white-space: nowrap;">
+                        <a class="btn btn-info btn-sm"
+                            href="{{ route('kecamatan.show', $item) }}"role="button">Detail</a>
+
                         <a class="btn btn-warning btn-sm"
                             href="{{ route('kecamatan.edit', $item) }}"role="button">Edit</a>
 
@@ -64,14 +67,12 @@
                                 Delete
                             </button>
                         </form>
-
                     </td>
-
                 </tr>
 
             @empty
                 <tr>
-                    <td colspan="4" class="text-center">Data Kecamatan Tidak Ditemukan</td>
+                    <td colspan="5" class="text-center">Data Kecamatan Tidak Ditemukan</td>
                 </tr>
             @endforelse
 

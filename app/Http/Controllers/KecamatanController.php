@@ -68,7 +68,11 @@ class KecamatanController extends Controller
      */
     public function show(Kecamatan $kecamatan)
     {
-        //
+        return view('kecamatan.show', 
+        ['title' => 'Detail Kecamatan',
+        'kecamatan'=> $kecamatan,
+        
+        ]);
     }
 
     /**
