@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DusunController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PetugasController;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,4 @@ Route::put('/petugas/{petugas}', [PetugasController::class, 'update'])->name('pe
 Route::delete('/petugas/{petugas}', [PetugasController::class, 'destroy'])->name('petugas.destroy');
 
 Route::resource('kecamatan', KecamatanController::class);
+Route::resource('dusun', DusunController::class);

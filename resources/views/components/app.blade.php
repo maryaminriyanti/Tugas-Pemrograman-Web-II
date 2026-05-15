@@ -31,7 +31,7 @@
 
                     <a class="nav-link" href="{{ route('kecamatan.index') }}">Kecamatan</a>
 
-                    <a class="nav-link" href="#">Dusun</a>
+                    <a class="nav-link" href="{{ route('dusun.index') }}">Dusun</a>
 
                 </div>
             </div>

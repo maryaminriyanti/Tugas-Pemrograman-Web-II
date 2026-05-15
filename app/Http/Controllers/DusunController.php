@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dusun;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class DusunController extends Controller
@@ -12,7 +13,27 @@ class DusunController extends Controller
      */
     public function index()
     {
-        //
+        $dusuns = Dusun::latest();
+        $keyword = request('keyword');
+
+        if ($keyword) {
+            $dusuns->where('nama_dusun', 'like', '%' . $keyword . '%');
+        }
+
+        $kecamatan_id = request('kecamatan_id');
+
+        if ($kecamatan_id) {
+            $dusuns->where('kecamatan_id', $kecamatan_id);
+        }
+
+        return view('dusun.index', [
+            'title' => 'Dusun',
+
+            'kecamatans' => Kecamatan::latest()->get(),
+
+            'dusuns' => $dusuns->paginate(5)->withQueryString(),
+
+        ]);
     }
 
     /**
