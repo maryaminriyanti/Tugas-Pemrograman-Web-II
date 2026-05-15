@@ -151,6 +151,7 @@ class DusunController extends Controller
      */
     public function destroy(Dusun $dusun)
     {
-        //
+        $dusun->delete();
+        return to_route('dusun.index')->withSuccess('Data Dusun berhasil dihapus');
     }
 }

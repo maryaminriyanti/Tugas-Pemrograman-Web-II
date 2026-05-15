@@ -71,6 +71,13 @@
                     <td style="white-space: nowrap;">
                         <a class="btn btn-warning btn-sm" href="{{ route('dusun.edit', $dusun) }}"
                             role="button">Edit</a>
+                            
+                        <form action="{{ route('dusun.destroy', $dusun) }}" method="POST" class="d-inline">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Anda yakin?')">Delete</button>
+                        </form>
                     </td>
                 </tr>
 
