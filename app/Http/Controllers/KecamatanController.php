@@ -116,6 +116,7 @@ class KecamatanController extends Controller
      */
     public function destroy(Kecamatan $kecamatan)
     {
-        //
+        $kecamatan->delete($kecamatan);
+            return to_route('kecamatan.index')->withSuccess('Data Kecamatan berhasil dihapus');
     }
 }
