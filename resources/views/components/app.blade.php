@@ -29,7 +29,7 @@
 
                     <a class="nav-link" href="{{ route('petugas.index') }}">Petugas</a>
 
-                    <a class="nav-link" href="#">Kecamatan</a>
+                    <a class="nav-link" href="{{ route('kecamatan.index') }}">Kecamatan</a>
 
                     <a class="nav-link" href="#">Dusun</a>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PetugasController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,3 +12,5 @@ Route::post('/petugas/store', [PetugasController::class, 'store'])->name('petuga
 Route::get('/petugas/{petugas}/edit', [PetugasController::class, 'edit'])->name('petugas.edit');
 Route::put('/petugas/{petugas}', [PetugasController::class, 'update'])->name('petugas.update');
 Route::delete('/petugas/{petugas}', [PetugasController::class, 'destroy'])->name('petugas.destroy');
+
+Route::resource('kecamatan', KecamatanController::class);

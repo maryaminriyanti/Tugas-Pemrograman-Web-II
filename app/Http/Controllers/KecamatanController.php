@@ -10,9 +10,19 @@ class KecamatanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('kecamatan.index', [
+            'title' => 'Kecamatan',
+            'kecamatans' => Kecamatan::latest()
+                ->when($request->search, function ($query, $search) {
+                    return $query->where('nama_kecamatan', 'like', "%{$search}%")
+                        ->orWhere('kode_kecamatan', 'like', "%{$search}%")
+                        ->orWhere('alamat_kantor', 'like', "%{$search}%");
+                })
+                ->paginate(5)
+                ->withQueryString(),
+        ]);
     }
 
     /**
