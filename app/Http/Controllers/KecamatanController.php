@@ -30,7 +30,8 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('kecamatan.create', 
+        ['title' => 'Tambah Kecamatan',]);
     }
 
     /**
@@ -38,7 +39,28 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $validated = $request->validate([
+            'nama_kecamatan' => 'required|max:255',
+            'kode_kecamatan' => 'required|max:255|unique:kecamatans',
+            'alamat_kantor' => 'required|max:255',
+        ], [
+
+            'nama_kecamatan.required' => 'Nama Kecamatan tidak boleh kosong',
+            'nama_kecamatan.max' => 'Nama Kecamatan maximal 255 karakter',
+
+            'kode_kecamatan.required' => 'Kode Kecamatan tidak boleh kosong',
+            'kode_kecamatan.max' => 'Kode Kecamatan maximal 255 karakter',
+            'kode_kecamatan.unique' => 'Kode Kecamatan sudah digunakan',
+
+            'alamat_kantor.required' => 'Alamat Kantor tidak boleh kosong',
+            'alamat_kantor.max' => 'Alamat Kantor maximal 255 karakter',
+
+        ]);
+
+        Kecamatan::create($validated);
+
+        return to_route('kecamatan.index')
+            ->withSuccess('Data Kecamatan berhasil ditambahkan');
     }
 
     /**

@@ -8,6 +8,8 @@
         </div>
     @endsession
 
+    <a class="btn btn-primary mb-3" href="{{ route('kecamatan.create') }}" role="button">Create</a>
+
     <form action="{{ route('kecamatan.index') }}" method="GET" class="mb-3">
 
         <div class="row">
