@@ -13,7 +13,7 @@ class KecamatanController extends Controller
     public function index(Request $request)
     {
         return view('kecamatan.index', [
-            'title' => 'Kecamatan',
+            'title' => 'Data Kecamatan',
             'kecamatans' => Kecamatan::latest()
                 ->when($request->search, function ($query, $search) {
                     return $query->where('nama_kecamatan', 'like', "%{$search}%")
@@ -31,7 +31,7 @@ class KecamatanController extends Controller
     public function create()
     {
         return view('kecamatan.create', 
-        ['title' => 'Tambah Kecamatan',]);
+        ['title' => 'Tambah Data Kecamatan',]);
     }
 
     /**
@@ -69,7 +69,7 @@ class KecamatanController extends Controller
     public function show(Kecamatan $kecamatan)
     {
         return view('kecamatan.show', 
-        ['title' => 'Detail Kecamatan',
+        ['title' => 'Detail Data Kecamatan',
         'kecamatan'=> $kecamatan,
         
         ]);
@@ -81,7 +81,7 @@ class KecamatanController extends Controller
     public function edit(Kecamatan $kecamatan)
     {
         return view('kecamatan.edit',[
-            'title' => 'Edit Kecamatan',
+            'title' => 'Edit Data Kecamatan',
             'kecamatan' => $kecamatan,
         ]);
     }

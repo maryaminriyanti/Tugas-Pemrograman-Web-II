@@ -26,7 +26,7 @@ class DusunController extends Controller
             $dusuns->where('kecamatan_id', $kecamatan_id);
         }
         return view('dusun.index', [
-            'title' => 'Dusun',
+            'title' => 'Data Dusun',
             'kecamatans' => Kecamatan::latest()->get(),
             'dusuns' => $dusuns->paginate(5)->withQueryString(),
         ]);
@@ -38,7 +38,7 @@ class DusunController extends Controller
     public function create()
     {
         return view('dusun.create', 
-        ['title' => 'Tambah Dusun',
+        ['title' => 'Tambah Data Dusun',
         'kecamatans' => Kecamatan::latest()->get(),
         ]);
     }
@@ -94,7 +94,10 @@ class DusunController extends Controller
      */
     public function show(Dusun $dusun)
     {
-        //
+        return view('dusun.show', [
+            'title' => 'Detail Data Dusun',
+            'dusun' => $dusun,
+        ]);
     }
 
     /**
@@ -103,7 +106,7 @@ class DusunController extends Controller
     public function edit(Dusun $dusun)
     {
         return view('dusun.edit', [
-            'title' => 'Edit Dusun',
+            'title' => 'Edit Data Dusun',
             'dusun' => $dusun,
             'kecamatans' => Kecamatan::latest()->get(),
         ]);

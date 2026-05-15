@@ -69,9 +69,13 @@
                     <td>{{ $dusun->luas_wilayah }}</td>
                     <td>{{ $dusun->kecamatan->nama_kecamatan }}</td>
                     <td style="white-space: nowrap;">
+
+                        <a class="btn btn-info btn-sm" href="{{ route('dusun.show', $dusun) }}"
+                            role="button">Detail</a>
+
                         <a class="btn btn-warning btn-sm" href="{{ route('dusun.edit', $dusun) }}"
                             role="button">Edit</a>
-                            
+
                         <form action="{{ route('dusun.destroy', $dusun) }}" method="POST" class="d-inline">
                             @method('DELETE')
                             @csrf
