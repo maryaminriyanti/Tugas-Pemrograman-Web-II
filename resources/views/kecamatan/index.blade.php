@@ -36,6 +36,7 @@
                 <th>Nama Kecamatan</th>
                 <th>Kode Kecamatan</th>
                 <th>Alamat Kantor</th>
+                <th>Aksi</th>
             </tr>
 
         </thead>
@@ -49,6 +50,12 @@
                     <td>{{ $item->nama_kecamatan }}</td>
                     <td>{{ $item->kode_kecamatan }}</td>
                     <td>{{ $item->alamat_kantor }}</td>
+
+                    <td style="white-space: nowrap;">
+                        <a class="btn btn-warning btn-sm"
+                            href="{{ route('kecamatan.edit', $item) }}"role="button">Edit</a>
+
+                    </td>
 
                 </tr>
 
