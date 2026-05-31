@@ -100,6 +100,7 @@ class PetugasController extends Controller
         'alamat' => 'required',
         'no_hp' => 'required',
         'email' => 'required|email',
+        'gender' => 'required|in:Laki-laki,Perempuan',
     ],
     [
         'nama_petugas.required' => 'Nama petugas tidak boleh kosong',
@@ -114,12 +115,20 @@ class PetugasController extends Controller
 
         'email.required' => 'Email tidak boleh kosong',
         'email.email' => 'Format email tidak valid',
+        
+        'gender.required' => 'Gender tidak boleh kosong',
+        'gender.in' => 'Gender tidak valid',
     ]);
 
-    $petugas->update($validated);
-
-    return to_route('petugas.index')
-        ->withSuccess('Data petugas berhasil diubah');
+        try{
+            DB::beginTransaction();
+            $petugas->update($validated);
+            DB::commit();
+            return to_route('petugas.index')->withSuccess('Data petugas berhasil diubah');
+        }catch (\Exception $e){
+            DB::rollBack();
+            return to_route('petugas.edit', $petugas)->withError('Data petugas gagal diubah');
+        }
     }
 
     /**
