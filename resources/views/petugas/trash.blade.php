@@ -7,13 +7,21 @@
         </div>
     @endsession
 
-    <a class="btn btn-warning mb-3" href="{{ route('petugas.index') }}" role="button">Kembali</a>
+    <a class="btn btn-primary mb-3" href="{{ route('petugas.index') }}" role="button">Kembali</a>
 
     <ul class="list-group">
         @foreach ($petugas as $item)
             <li class="list-group-item">
                 {{ $loop->iteration }}. {{ $item->nip }} -- {{ $item->nama_petugas }} -- {{ $item->alamat }} --
-                {{ $item->no_hp }} -- {{ $item->email }}-- {{ $item->gender }}
+                {{ $item->no_hp }}-- {{ $item->email }} -- {{ $item->gender }}
+
+                <form action="{{ route('petugas.restore', $item) }}" method="POST" class="d-inline">
+                    @method('PUT')
+                    @csrf
+
+                    <button type="submit" class="btn btn-warning btn-sm"
+                        onclick="return confirm('Anda yakin ingin mengembalikan data?')">Restore</button>
+                </form>
             </li>
         @endforeach
     </ul>

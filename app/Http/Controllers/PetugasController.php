@@ -148,4 +148,10 @@ class PetugasController extends Controller
             'petugas' => Petugas::onlyTrashed()->get(),
         ]);
     }
+
+    public function restore(Petugas $petugas)
+    {
+        $petugas->restore();
+        return to_route('petugas.trash')->withSuccess('Data berhasil dikembalikan');
+    }
 }
