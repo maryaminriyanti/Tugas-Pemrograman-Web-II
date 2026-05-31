@@ -34,8 +34,11 @@
                     <a class="nav-link" href="{{ route('dusun.index') }}">Dusun</a>
 
                 </div>
+
             </div>
+
         </div>
+
     </nav>
 
     <div class="bg-info py-5 text-center text-white">
