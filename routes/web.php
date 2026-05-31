@@ -14,5 +14,9 @@ Route::get('/petugas/{petugas}/edit', [PetugasController::class, 'edit'])->name(
 Route::put('/petugas/{petugas}', [PetugasController::class, 'update'])->name('petugas.update');
 Route::delete('/petugas/{petugas}', [PetugasController::class, 'destroy'])->name('petugas.destroy');
 
+//SOFT DELETES
+Route::get('/petugas/trash', [PetugasController::class, 'trash'])->name('petugas.trash');
+
+
 Route::resource('kecamatan', KecamatanController::class);
 Route::resource('dusun', DusunController::class);

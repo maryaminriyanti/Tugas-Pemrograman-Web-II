@@ -139,4 +139,13 @@ class PetugasController extends Controller
         $petugas->delete($petugas);
             return to_route('petugas.index')->withSuccess('Data berhasil dihapus');
     }
+    
+    // soft deletes
+    public function trash()
+    {
+        return view('petugas.trash', [
+            'title' => 'Trash Petugas',
+            'petugas' => Petugas::onlyTrashed()->get(),
+        ]);
+    }
 }

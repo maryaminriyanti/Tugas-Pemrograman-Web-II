@@ -33,6 +33,8 @@
 
                     <a class="nav-link" href="{{ route('dusun.index') }}">Dusun</a>
 
+                    <a class="nav-link" href="{{ route('petugas.trash') }}">Trash</a>
+
                 </div>
 
             </div>
