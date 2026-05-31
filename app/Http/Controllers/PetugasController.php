@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Petugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PetugasController extends Controller
 {
@@ -38,6 +39,7 @@ class PetugasController extends Controller
             'alamat' => 'required',
             'no_hp' => 'required',
             'email' => 'required|email',
+            'gender' => 'required|in:Laki-laki,Perempuan',
         ],
         [
             'nama_petugas.required' => 'Nama petugas tidak boleh kosong',
@@ -52,12 +54,20 @@ class PetugasController extends Controller
 
             'email.required' => 'Email tidak boleh kosong',
             'email.email' => 'Format email tidak valid',
+
+            'gender.required' => 'Gender tidak boleh kosong',
+            'gender.in' => 'Gender tidak valid',
         ]);
 
-        Petugas::create($validated);
-
-        return to_route('petugas.index')
-            ->withSuccess('Data petugas berhasil ditambahkan');
+        try {
+            DB::beginTransaction();
+            Petugas::create($validated);
+            DB::commit();
+            return to_route('petugas.index')->withSuccess('Data petugas berhasil ditambahkan');
+        }catch (\Exception $e){
+            DB::rollBack();
+            return to_route('petugas.create')->withError('Data petugas gagal ditambahkan');
+        }
     }
 
     /**
