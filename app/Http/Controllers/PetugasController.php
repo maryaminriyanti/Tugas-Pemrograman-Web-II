@@ -154,4 +154,10 @@ class PetugasController extends Controller
         $petugas->restore();
         return to_route('petugas.trash')->withSuccess('Data berhasil dikembalikan');
     }
+
+    public function forceDelete(Petugas $petugas)
+    {
+        $petugas->forceDelete();
+        return to_route('petugas.trash')->withSuccess('Data berhasil dihapus secara permanen');
+    }
 }

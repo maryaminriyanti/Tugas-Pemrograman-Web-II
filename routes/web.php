@@ -17,6 +17,8 @@ Route::delete('/petugas/{petugas}', [PetugasController::class, 'destroy'])->name
 //SOFT DELETES
 Route::get('/petugas/trash', [PetugasController::class, 'trash'])->name('petugas.trash');
 Route::put('/petugas/{petugas}/restore', [PetugasController::class, 'restore'])->name('petugas.restore')->withTrashed();
+Route::delete('/petugas/{petugas}/force-delete', [PetugasController::class, 'forceDelete'])->name('petugas.forceDelete')->withTrashed();
+
 
 Route::resource('kecamatan', KecamatanController::class);
 Route::resource('dusun', DusunController::class);
